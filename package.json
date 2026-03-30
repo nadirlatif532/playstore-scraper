@@ -1,0 +1,8 @@
+{
+  "name": "play-store-hybrid-scraper",
+  "version": "1.0.0",
+  "main": "bridge.js",
+  "dependencies": {
+    "google-play-scraper": "^10.1.2"
+  }
+}
