@@ -649,6 +649,25 @@ def suggest():
     return jsonify(call_node_scraper("suggest", {"term": term}, term))
 
 
+@app.route("/search")
+def search():
+    term = request.args.get("term", "")
+    num = request.args.get("num", "20")
+    lang = request.args.get("lang", "en")
+    country = request.args.get("country", "us")
+
+    if not term:
+        return jsonify({"error": "Search term is required"}), 400
+
+    return jsonify(
+        call_node_scraper(
+            "search",
+            {"term": term, "num": int(num), "lang": lang, "country": country},
+            term,
+        )
+    )
+
+
 if __name__ == "__main__":
     # Standard Hugging Face port
     app.run(host="0.0.0.0", port=7860, debug=True)
